@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { ArrowUpRight, Github, Linkedin, Terminal, Moon, Sun, ChevronDown, Mail, Phone, MapPin, Clock, FileText, Code2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Analytics } from '@vercel/analytics/react'
+import emailjs from 'emailjs-com';
 
 type ColorTheme = 'green' | 'blue' | 'purple' | 'red' | 'orange' | 'pink' | 'cyan' | 'rainbow'
 
-export default function EnhancedPortfolio() {
+export default function EnhancedPortfolioe() {
   const [activeWindow, setActiveWindow] = useState('about')
   const [isDarkMode, setIsDarkMode] = useState(true)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,6 +14,43 @@ export default function EnhancedPortfolio() {
   const [terminalStyle, setTerminalStyle] = useState<WindowProps['style']>('modern')
   const [colorTheme, setColorTheme] = useState<ColorTheme>('green')
   const [isThemeControlsOpen, setIsThemeControlsOpen] = useState(false)
+
+
+  const [loading, setLoading] = useState(false);  // To track the loading state
+  const [success, setSuccess] = useState(null);  // To track success/error state
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Set loading state to true when form is submitted
+    setLoading(true);
+    setSuccess(null);
+    setErrorMessage('');
+
+    // Send email using EmailJS
+    emailjs
+      .sendForm(
+        'service_fmunrra', // Replace with your EmailJS Service ID
+        'template_v6kvs1o', // Replace with your EmailJS Template ID
+        event.target, // The form element
+        'oI4fxdnBlZTqiTpOm' // Replace with your EmailJS User ID
+      )
+      .then(
+        (result) => {
+          console.log('Email sent successfully:', result.text);
+          setSuccess(true); // Set success state to true
+          setLoading(false); // Disable loading spinner
+          event.target.reset(); // Reset form after successful submission
+        },
+        (error) => {
+          console.error('Error sending email:', error.text);
+          setSuccess(false); // Set success state to false
+          setErrorMessage('Something went wrong, please try again later.');
+          setLoading(false); // Disable loading spinner
+        }
+      );
+  };
 
   useEffect(() => {
     // Handle scroll to update active window
@@ -1008,7 +1046,7 @@ export default function EnhancedPortfolio() {
               <h2 className={`text-3xl font-bold mb-8 text-center ${isDarkMode ? 'text-white' : 'text-black'}`}>Contact</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <Window title="contact-form.jsx" isActive>
-                  <form className="space-y-4">
+                  <form className="space-y-4" onSubmit={handleSubmit}>
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-zinc-400 mb-1">Name</label>
                       <input
@@ -1016,6 +1054,7 @@ export default function EnhancedPortfolio() {
                         id="name"
                         name="name"
                         placeholder="Your name"
+                        disabled={loading} // Disable input during submission
                         className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-green-500 placeholder:text-zinc-600"
                         required
                       />
@@ -1026,6 +1065,7 @@ export default function EnhancedPortfolio() {
                         type="email"
                         id="email"
                         name="email"
+                        disabled={loading} // Disable input during submission
                         placeholder="your.email@example.com"
                         className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-green-500 placeholder:text-zinc-600"
                         required
@@ -1036,6 +1076,7 @@ export default function EnhancedPortfolio() {
                       <textarea
                         id="message"
                         name="message"
+                        disabled={loading} // Disable input during submission
                         rows={4}
                         placeholder="Your message here..."
                         className="w-full px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-green-500 placeholder:text-zinc-600"
@@ -1046,12 +1087,23 @@ export default function EnhancedPortfolio() {
                       type="submit"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full bg-green-500 text-black font-bold py-3 px-4 rounded-md hover:bg-green-400 transition-colors flex items-center justify-center gap-2"
+                      className={`w-full ${loading ? 'bg-gray-500' : 'bg-green-500'} text-black font-bold py-3 px-4 rounded-md hover:bg-green-400 transition-colors flex items-center justify-center gap-2`}
+                      disabled={loading} // Disable button during submission
                     >
-                      <Mail className="w-4 h-4" />
-                      Send Message
+                      {loading ? (
+                        <div className="loader w-4 h-4 border-4 border-t-transparent border-green-500 rounded-full animate-spin"></div> // Spinner while loading
+                      ) : (
+                        <Mail className="w-4 h-4" />
+                      )}
+                      {loading ? 'Sending...' : 'Send Message'}
                     </motion.button>
                   </form>
+                  {/* Success/Error Message */}
+                  {success !== null && (
+                    <div className={`pt-4 mt-4 ${success ? 'text-green-500' : 'text-red-500'}`}>
+                      <p>{success ? 'Your message was sent successfully!' : errorMessage}</p>
+                    </div>
+                  )}
                   {/* Quick Response Promise */}
                   <div className="pt-4 border-t border-zinc-800 mt-4">
                     <div className="flex items-center gap-2 text-sm text-zinc-400">
