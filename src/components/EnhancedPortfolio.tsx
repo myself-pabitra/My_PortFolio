@@ -343,7 +343,7 @@ export default function EnhancedPortfolioe() {
             ))}
             <li className="md:ml-4">
               <motion.a
-                href="https://drive.google.com/file/d/10BMAFigxAIGCNvHvr6zgbxPZWjh1vUfY/view?usp=drivesdk"
+                href="https://drive.google.com/file/d/117Toz9paQ0LpEoHAsQ5FsMBR1hMrhBDw/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -627,7 +627,7 @@ export default function EnhancedPortfolioe() {
                     Get in touch
                   </motion.a>
                   <motion.a
-                    href="https://drive.google.com/uc?export=download&id=10BMAFigxAIGCNvHvr6zgbxPZWjh1vUfY"
+                    href="https://drive.google.com/uc?export=download&id=117Toz9paQ0LpEoHAsQ5FsMBR1hMrhBDw"
                     // target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
