@@ -343,7 +343,7 @@ export default function EnhancedPortfolioe() {
             ))}
             <li className="md:ml-4">
               <motion.a
-                href="https://drive.google.com/file/d/117Toz9paQ0LpEoHAsQ5FsMBR1hMrhBDw/view?usp=sharing"
+                href="https://drive.google.com/file/d/15UhH_A40vrS46GDJVOPTfnx9SZ1Mp-UF/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -890,7 +890,7 @@ export default function EnhancedPortfolioe() {
                   Career Journey
                 </h2>
                 <motion.a
-                  href="https://drive.google.com/file/d/10BMAFigxAIGCNvHvr6zgbxPZWjh1vUfY/view?usp=drivesdk"
+                  href="https://drive.google.com/uc?export=download&id=15UhH_A40vrS46GDJVOPTfnx9SZ1Mp-UF"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
