@@ -343,7 +343,7 @@ export default function EnhancedPortfolioe() {
             ))}
             <li className="md:ml-4">
               <motion.a
-                href="https://drive.google.com/file/d/15UhH_A40vrS46GDJVOPTfnx9SZ1Mp-UF/view?usp=sharing"
+                href="https://drive.google.com/file/d/1HSKT-nKA3Il0xZENk4xR_4Wb2RYtqW9q/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -627,7 +627,9 @@ export default function EnhancedPortfolioe() {
                     Get in touch
                   </motion.a>
                   <motion.a
-                    href="https://drive.google.com/uc?export=download&id=117Toz9paQ0LpEoHAsQ5FsMBR1hMrhBDw"
+                    href="https://drive.google.com/uc?export=download&id=1HSKT-nKA3Il0xZENk4xR_4Wb2RYtqW9q"
+                    
+
                     // target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
@@ -890,7 +892,7 @@ export default function EnhancedPortfolioe() {
                   Career Journey
                 </h2>
                 <motion.a
-                  href="https://drive.google.com/uc?export=download&id=15UhH_A40vrS46GDJVOPTfnx9SZ1Mp-UF"
+                  href="https://drive.google.com/uc?export=download&id=1HSKT-nKA3Il0xZENk4xR_4Wb2RYtqW9q"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
